@@ -1,0 +1,41 @@
+id,name,brewery_type,city,state,postal_code,country,website_url,longitude,latitude
+ef970757-fe42-416f-931d-722451f1f59c,10 Barrel Brewing Co,large,San Diego,California,92101-6618,United States,http://10barrel.com,-117.129593,32.714813
+5ae467af-66dc-4d7f-8839-44228f89b596,101 North Brewing Company,closed,Petaluma,California,94954-7100,United States,http://www.101northbeer.com,-122.665055,38.27029381
+4788221a-a03b-458c-9084-4cadd69ade6d,14 Cannons Brewing Company,micro,Westlake Village,California,91362-3974,United States,http://14cannons.com,-118.802397,34.15334
+fe6b9893-b93e-43d5-a9f6-3e0c89a3f13c,1850 Brewing Company,micro,Mariposa,California,95338,United States,http://www.1850restaurant.com,-119.9036592,37.570148
+5ec3b488-48bd-49a7-9828-05bd90195cd5,2 Tread Brewing Co,brewpub,Santa Rosa,California,95401-6399,United States,http://www.2treadbrewing.com,-122.7167729,38.4387767
+63baab9a-b561-4eff-8619-f95290a61b77,21st Amendment Brewery,regional,San Leandro,California,94577-2334,United States,http://www.21st-Amendment.com,-122.1772928,37.71130036
+8f9621dc-da98-4ddb-82a1-039c9e2b3224,21st Amendment Brewery Cafe,brewpub,San Francisco,California,94107-1411,United States,http://www.21st-amendment.com,-122.3925769,37.782448
+5fdcc498-f9df-4fa5-b35d-487a59f0fecc,2Kids Brewing Company,micro,San Diego,California,92126-6391,United States,http://www.2kidsBrewing.com,-117.137429,32.896584
+60c00c0b-b797-4f6a-b442-3bfbaec156ca,3 Disciples Brewing,micro,Sebastopol,California,95472-5937,United States,http://www.3disciplesbrewing.com/home,-122.8332502,38.3845125
+a74744eb-ca98-43c5-9199-09df39f8b400,3 Iron Brewing Company,micro,Colton,California,92324-3920,United States,http://www.3ironbrewingco.com,-117.3066993,34.05616889
+3b0b5b9b-f6d8-49e3-8ebd-0bcef6939bcd,32 North Brewing Co,brewpub,San Diego,California,92121-2258,United States,https://42northbrewing.com,-117.1649842,32.88313237
+b7f2ebb8-6764-4654-a98b-246724c8952a,411 Broadway Ales,planning,Fresno,California,93721-2801,United States,,-119.7088613,36.7295295
+6b892c61-269b-453f-acd1-b79491b0ef0b,47 Hills Brewing Co,brewpub,South San Francisco,California,94080-6410,United States,http://47hillsbrewingcompany.com,-122.4136168,37.64425595
+7e12d827-22dc-4d07-8715-8192c9680b23,5150 Brewing At The Brass Tap Rocklin,micro,Rocklin,California,95677-3925,United States,http://www.brasstaprocklin.com,-121.207331,38.8047402
+4a4baf4f-921c-46c0-9130-afcc4ce4f4d2,559 Local Brewing,micro,Clovis,California,93612-1183,United States,http://www.fresnobrewingcompany.com,-119.7017487,36.82517171
+af6cb069-b61a-4c69-8fd2-0a5f87c11a17,6th and La Brea,brewpub,Los Angeles,California,90036,United States,http://www.6thlabrea.com,-118.3440213,34.0730485
+a3a1eac7-b858-4bdd-81ac-c2099b717da2,7 Sisters Brewing Co,brewpub,San Luis Obispo,California,93401-7082,United States,http://www.7sistersbrewing.com,-120.6706375,35.2467278
+c6a766f9-a187-4e5b-9519-6c737ce0cde5,8 Bit Brewing Company,brewpub,Murrieta,California,92562-6941,United States,http://www.8bitbrewerycompany.com,-117.1762542,33.53033448
+3055793c-9330-4fe1-958b-fef6d2a0e057,8one8 Brewing Company,micro,Canoga Park,California,91304-5901,United States,http://www.818brewing.com,-118.5885323,34.2218019
+de6341a8-881b-4d9f-9335-5e9203e8a2c3,927 Beer Company,micro,Cambria,California,93428-2434,United States,http://www.cambriabeerco.com,-121.0985408,35.5666725
+e2fa853c-ca91-4043-878d-0bcee9900ea3,Abigaile,brewpub,Hermosa Beach,California,90254-3666,United States,http://abigailrestaurant.com,-118.4048656,33.8734519
+4db32843-26ff-4e73-9e24-1cb874109b24,Abnormal Beer Company,micro,San Diego,California,92127-1649,United States,http://abnormalbeer.co,-117.08575,33.02391
+67525d30-1f18-4f03-a8ba-28a1153955eb,Absolution Brewing Co,micro,Torrance,California,90503-3808,United States,http://www.absolutionbrewingcompany.com,-118.3378601,33.8431391
+600f88e5-9dc9-4a41-b54e-909c292ba4bb,Absolution By the Sea,brewpub,La Jolla,California,92037-4839,United States,,-117.2740167,32.84083388
+2fe1e670-d832-4ba5-b957-f86a09ee062d,Acoustic Ales Brewing Experiment,closed,San Diego,California,92110-2006,United States,http://www.acousticales.com,-117.1840465,32.74219079
+2861f9b7-ebe4-49a5-a047-8aa0c142dbf3,Adobe Creek Brewing Company,micro,Novato,California,94949-5718,United States,http://www.adobecreekbrewing.com,-122.5358157,38.07349982
+333c81a4-9bcd-4699-b28a-2c49dd696596,Aftershock Brewing Co,micro,Temecula,California,92590-2893,United States,http://www.aftershockbrewingco.com,-117.1485306,33.49310382
+6fbd1118-ceea-4be9-a784-45dd623f16f0,Alameda Island Brewing Company,micro,Alameda,California,94501-1416,United States,http://www.alamedaislandbrewingcompany.com,-122.2394506,37.76833631
+aa3c4d60-4fb2-49e2-980c-6a61672d90cb,Alaro Craft Brewery,brewpub,Sacramento,California,95811,United States,http://www.alarobrewing.com,-121.4811835,38.57323961
+e13a5403-3cd7-4dbf-92f1-e48d0f26c750,Ale House Brewing Co,micro,San Jose,California,95118-1605,United States,,-121.8905833,37.3361905
+13f19f47-cac4-44df-b4f3-728e4dcde6c5,Ale Industries,micro,Oakland,California,94601-2960,United States,http://www.aleindustries.com,-122.2281897,37.7761111
+f8097dbc-c8e6-4068-9540-5c4bd4ac0bcf,AleSmith Brewing Co,regional,San Diego,California,92126-4200,United States,http://www.alesmith.com,-117.1495496,32.88858458
+68b447a3-c65c-459f-8d02-334757bc6f71,Align Brewing Co,micro,San Diego,California,92126-6300,United States,http://www.facebook.com/alignbrewing,-117.137429,32.896584
+82ea8f08-2026-43f8-b1a7-cc57ebe8c0bb,All-American Ale Works,micro,Anaheim,California,92807-2082,United States,http://www.all-americanaleworks.com,-117.8056915,33.85925032
+9a6f84d7-194b-426d-999f-c1be9beb835d,Almanac Beer Company,micro,Alameda,California,94501-5047,United States,http://almanacbeer.com,-122.3062832,37.78344977
+30ef2457-11c4-48ef-ae58-37109ceda4c7,Alosta Brewing Co,micro,Covina,California,91722-2122,United States,http://www.alostabrewing.com,-117.8781466,34.10365026
+abe71cdf-8c92-4be2-adac-902d1a14e7bb,Alpenglow Beer Co,contract,Lafayette,California,94549-4621,United States,http://www.buckwildbrew.com,-122.1180201,37.8857582
+dc9fb80b-fb92-47c2-8b13-9a6f6990f99e,Alpha Acid Brewing Co,micro,Belmont,California,94002-8208,United States,,-122.2655717,37.52125155
+1d7c2273-8031-40d2-bb50-7f518722e291,Alpine Beer Company,brewpub,San Diego,California,92121-4100,United States,http://www.alpinebrewing.com,-117.113975,32.9167796
+728f9750-1c56-48be-9f96-b26d04215958,Alta Brewing Company,micro,San Diego,California,92113-1125,United States,http://www.altabrewing.com,-117.1414712,32.7018758

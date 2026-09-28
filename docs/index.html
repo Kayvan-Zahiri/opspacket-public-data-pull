@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="https://kayvan-zahiri.github.io/opspacket-public-data-pull/" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpsPacket — Public Data Pull → Clean CSV ($149 / $199 rush)</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a222d'/%3E%3Crect x='4' y='4' width='24' height='24' rx='5' fill='%231a222d' stroke='%233d9cf0' stroke-width='1.5'/%3E%3Cpath d='M10 16h12M16 10v12' stroke='%233d9cf0' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='3.2' fill='%233ecf8e'/%3E%3C/svg%3E" />
+  <meta name="description" content="Public URL pattern + field list → deduped CSV/JSON + schema notes. $149 in ≤72h or $199 rush ≤24h. Public pages only. No login walls, no spam lists." />
+  <meta property="og:title" content="OpsPacket — Public Data Pull → Clean CSV" />
+  <meta property="og:description" content="Fixed-scope public scrape to CSV. $149 standard / $199 rush. Public-only hard rules." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="OpsPacket — Public Data Pull → Clean CSV" />
+  <meta name="twitter:description" content="Public URL pattern + fields → CSV + schema. $149 / $199 rush." />
+  <link rel="canonical" href="https://kayvan-zahiri.github.io/opspacket-public-data-pull/" />
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a222d;
+      --surface2: #232d3b;
+      --border: #2e3a4a;
+      --text: #e8eef4;
+      --muted: #9aa8b8;
+      --accent: #3d9cf0;
+      --ok: #3ecf8e;
+      --warn: #e6b84d;
+      --danger: #e85d5d;
+      --radius: 10px;
+      --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; font-size: 17px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 1.25rem; }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      background: rgba(15, 20, 25, 0.92);
+      position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 10;
+    }
+    .nav {
+      max-width: 720px; margin: 0 auto; padding: 0 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brand {
+      font-weight: 700; letter-spacing: 0.02em; color: var(--text); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .brand span { color: var(--accent); }
+    .brand-mark { width: 28px; height: 28px; flex-shrink: 0; border-radius: 7px; }
+    .nav-links { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+    .nav-cta {
+      background: var(--accent); color: #061018 !important; font-weight: 600; font-size: 0.9rem;
+      padding: 0.45rem 0.9rem; border-radius: 6px; text-decoration: none !important;
+    }
+    .nav-cta:hover { background: #5aaff5; }
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .eyebrow {
+      display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.75rem;
+    }
+    h1 { font-size: clamp(1.75rem, 4vw, 2.35rem); line-height: 1.25; font-weight: 700; margin-bottom: 1rem; }
+    .lede { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.75rem; max-width: 38em; }
+    .price-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-bottom: 1.5rem; }
+    .price { font-size: 2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .price small { font-size: 0.95rem; font-weight: 500; color: var(--muted); }
+    .meta-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .pill {
+      font-size: 0.8rem; color: var(--muted); border: 1px solid var(--border);
+      background: var(--surface); padding: 0.25rem 0.65rem; border-radius: 999px;
+    }
+    .btn {
+      display: inline-block; background: var(--accent); color: #061018 !important; font-weight: 700;
+      padding: 0.85rem 1.4rem; border-radius: var(--radius); text-decoration: none !important;
+      border: none; cursor: pointer; font-size: 1rem;
+    }
+    .btn:hover { background: #5aaff5; }
+    .btn-ghost {
+      background: transparent; color: var(--text) !important; border: 1px solid var(--border); font-weight: 600;
+    }
+    .btn-ghost:hover { border-color: var(--muted); background: var(--surface); }
+    .btn-rush { background: var(--ok); }
+    .btn-rush:hover { background: #55dfa5; }
+    .cta-group { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .fine { font-size: 0.85rem; color: var(--muted); margin-top: 0.75rem; }
+    section { padding: 2.25rem 0; border-top: 1px solid var(--border); }
+    h2 { font-size: 1.35rem; margin-bottom: 1rem; }
+    h3 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem; }
+    p + p { margin-top: 0.85rem; }
+    ul.check { list-style: none; }
+    ul.check li {
+      position: relative; padding-left: 1.5rem; margin-bottom: 0.55rem; color: var(--muted);
+    }
+    ul.check li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 700; }
+    ul.x li::before { content: "✕"; color: var(--danger); }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem 1.35rem; margin-top: 1rem;
+    }
+    .tier-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 560px) { .tier-grid { grid-template-columns: 1fr 1fr; } }
+    .tier { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .tier.featured { border-color: var(--accent); }
+    .tier .amt { font-size: 1.75rem; font-weight: 700; margin: 0.35rem 0; }
+    .tier .amt small { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text); }
+    input[type="text"], input[type="email"], input[type="url"], input[type="number"], textarea, select {
+      width: 100%; background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+      border-radius: 8px; padding: 0.65rem 0.75rem; font: inherit; margin-bottom: 1rem;
+    }
+    textarea { min-height: 88px; resize: vertical; }
+    .checkrow { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 1rem; color: var(--muted); font-size: 0.95rem; }
+    .checkrow input { margin-top: 0.3rem; }
+    .pay-note {
+      background: var(--surface2); border: 1px dashed var(--border); border-radius: 8px;
+      padding: 0.85rem 1rem; font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem;
+    }
+    footer { padding: 2rem 0 3rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+    .muted { color: var(--muted); }
+    code { font-family: var(--mono); font-size: 0.88em; background: var(--surface2); padding: 0.1em 0.35em; border-radius: 4px; }
+    .deemph {
+      font-size: 0.8rem; color: var(--muted); opacity: 0.75; margin-top: 1.5rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="/">
+        <svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#1a222d"/>
+          <rect x="4" y="4" width="24" height="24" rx="5" fill="#1a222d" stroke="#3d9cf0" stroke-width="1.5"/>
+          <path d="M10 16h12M16 10v12" stroke="#3d9cf0" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="3.2" fill="#3ecf8e"/>
+        </svg>
+        Ops<span>Packet</span>
+      </a>
+      <div class="nav-links">
+        <a href="/data-pull/">Data Pull</a>
+        <a href="#sample">Sample</a>
+        <a class="nav-cta" href="https://kayvanandre.gumroad.com/l/public-data-pull">Buy $149</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <p class="eyebrow">EXP-003 · Productized service · Public data only</p>
+      <h1>Public URL pattern + fields → clean CSV in ≤72 hours</h1>
+      <p class="lede">
+        Need a one-off extract from a <strong>public</strong> directory, events list, open portal, or catalog?
+        You get a deduped CSV (JSON optional) plus a one-page schema with row counts and null rates — not another DIY scraper template.
+      </p>
+      <div class="price-row">
+        <div class="price">$149 <small>standard</small> · $199 <small>rush</small></div>
+        <div class="meta-pills">
+          <span class="pill">≤5,000 rows</span>
+          <span class="pill">≤12 fields</span>
+          <span class="pill">≤72h / ≤24h rush</span>
+          <span class="pill">1 schema revision</span>
+        </div>
+      </div>
+      <div class="cta-group">
+        <a class="btn" href="https://kayvanandre.gumroad.com/l/public-data-pull">Start Standard — $149</a>
+        <a class="btn btn-rush" href="https://kayvanandre.gumroad.com/l/public-data-pull-rush">Rush — $199</a>
+        <a class="btn btn-ghost" href="/data-pull/samples/openbrewerydb-california-sample.csv">Download sample CSV</a>
+      </div>
+      <p class="fine">Checkout live on Gumroad. Intake form below works for scope notes anytime.</p>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <h2>The problem</h2>
+        <p class="muted">
+          Free crawlers and “scrape it yourself” templates leave you with brittle scripts, messy HTML, and a Friday deadline.
+          Agencies quote days and four figures for a fixed public extract. You need a <strong>scoped data asset</strong> this week — not a PDF of advice free tools already spit out.
+        </p>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="wrap">
+        <h2>Pricing</h2>
+        <div class="tier-grid">
+          <div class="tier featured">
+            <h3>Standard</h3>
+            <div class="amt">$149 <small>≤72h</small></div>
+            <ul class="check">
+              <li>≤5,000 rows · ≤12 fields</li>
+              <li>Public HTML / JSON / open portals</li>
+              <li>robots.txt respected</li>
+              <li>CSV + schema.md (+ JSON optional)</li>
+              <li>1 revision on schema mismatch</li>
+            </ul>
+            <p style="margin-top:1rem"><a class="btn" href="https://kayvanandre.gumroad.com/l/public-data-pull">Pay $149</a></p>
+          </div>
+          <div class="tier">
+            <h3>Rush</h3>
+            <div class="amt">$199 <small>≤24h</small></div>
+            <ul class="check">
+              <li>Same scope as Standard</li>
+              <li>Priority queue · ≤24h delivery target</li>
+              <li>Same hard rules</li>
+            </ul>
+            <p style="margin-top:1rem"><a class="btn btn-rush" href="https://kayvanandre.gumroad.com/l/public-data-pull-rush">Pay $199 rush</a></p>
+          </div>
+        </div>
+        <p class="fine" style="margin-top:1rem">Out of scope (quote or decline): login walls, CAPTCHA farms, personal email/phone harvest for spam, ToS-prohibited targets, &gt;5k rows.</p>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="wrap">
+        <h2>Hard rules</h2>
+        <div class="tier-grid">
+          <div>
+            <h3>We do</h3>
+            <ul class="check">
+              <li>Public pages &amp; public APIs only</li>
+              <li>Respect robots.txt</li>
+              <li>Ephemeral processing</li>
+              <li>Delete source dumps ≤7 days after delivery</li>
+            </ul>
+          </div>
+          <div>
+            <h3>We don’t</h3>
+            <ul class="check x">
+              <li>Auth bypass / login walls</li>
+              <li>PII spam lists</li>
+              <li>“Guaranteed unbroken forever” scrapers</li>
+              <li>LinkedIn / ToS-hostile targets</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sample">
+      <div class="wrap">
+        <h2>Portfolio sample</h2>
+        <p class="muted">
+          Live example: public Open Brewery DB API → California slice → cleaned CSV + schema.
+          Source is a free public API designed for this use (no login, no ToS gymnastics).
+        </p>
+        <div class="card">
+          <p><strong>40 rows · 10 fields</strong> · pulled 2026-09-28 PT</p>
+          <p class="fine" style="margin-top:0.5rem">
+            <a href="/data-pull/samples/openbrewerydb-california-sample.csv">Download CSV</a>
+            · <a href="/data-pull/samples/schema.md">schema.md</a>
+            · <a href="/data-pull/">Full Data Pull page</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="intake">
+      <div class="wrap">
+        <h2>Scope intake</h2>
+        <p class="muted" style="margin-bottom:1rem">Tell us the public source and fields. Checkout is live on Gumroad (buttons above); this form is for scope notes.</p>
+        <form name="data-pull-intake" method="GET" action="https://kayvanandre.gumroad.com/l/public-data-pull">
+          <label for="url_pattern">URL pattern / public source *</label>
+          <input id="url_pattern" name="url_pattern" type="text" required placeholder="e.g. https://example.com/events?page=* or public JSON API URL" />
+
+          <label for="fields">Fields wanted (≤12) *</label>
+          <textarea id="fields" name="fields" required placeholder="title, date, location, url, …"></textarea>
+
+          <label for="row_cap">Row cap (max 5000)</label>
+          <input id="row_cap" name="row_cap" type="number" min="1" max="5000" value="1000" />
+
+          <label for="tier">Tier</label>
+          <select id="tier" name="tier">
+            <option value="standard-149">Standard $149 (≤72h)</option>
+            <option value="rush-199">Rush $199 (≤24h)</option>
+            <option value="unsure">Not sure yet</option>
+          </select>
+
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required placeholder="you@company.com" />
+
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" placeholder="Deadline, sample row, exclusions…"></textarea>
+
+          <div class="checkrow">
+            <input id="public_only" name="public_only" type="checkbox" value="yes" required />
+            <label for="public_only" style="font-weight:500;margin:0">
+              I confirm this is a <strong>public</strong> source (no login), I have the right to request the extract, and I am not asking for a personal email/phone spam list. *
+            </label>
+          </div>
+
+          <button class="btn" type="submit">Continue to checkout ($149) — add scope in Gumroad note</button>
+          <p class="fine">Prefer checkout first? Use the Gumroad buttons above, then reply with your URL pattern + fields. Or email scope notes after purchase.</p>
+        </form>
+
+        <div id="pay" class="pay-note">
+          <strong>Standard checkout — $149:</strong>
+          <a href="https://kayvanandre.gumroad.com/l/public-data-pull">kayvanandre.gumroad.com/l/public-data-pull</a>
+          <span id="pay-rush"></span>
+        </div>
+        <div class="pay-note">
+          <strong>Rush checkout — $199:</strong>
+          <a href="https://kayvanandre.gumroad.com/l/public-data-pull-rush">kayvanandre.gumroad.com/l/public-data-pull-rush</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="deemph">
+          Site Health SEO Snapshot promo is paused (Decision C). Not the active offer.
+          Legacy listing may remain published at zero marginal cost — we are not promoting it.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 OpsPacket · <a href="https://kayvan-zahiri.github.io/opspacket-public-data-pull/">OpsPacket Public Data Pull</a> · Public-data extracts only</p>
+      <p style="margin-top:0.5rem">No ranking, traffic, or “forever scraper” guarantees. Legitimate public sources only.</p>
+    </div>
+  </footer>
+</body>
+</html>
